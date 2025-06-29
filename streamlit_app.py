@@ -42,322 +42,65 @@ st.markdown("""
         color: white;
         border-left: 5px solid #ff6b6b;
     }
-    .feature-card {
-        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    .info-box {
+        background: #e3f2fd;
+        border-left: 4px solid #2196f3;
         padding: 1rem;
-        border-radius: 10px;
-        margin: 0.5rem 0;
-        color: white;
-        text-align: center;
-    }
-    .step-card {
-        background: #f8f9fa;
-        border-left: 4px solid #28a745;
-        padding: 1rem;
-        margin: 0.5rem 0;
+        margin: 1rem 0;
         border-radius: 5px;
     }
-    .warning-card {
+    .warning-box {
         background: #fff3cd;
         border-left: 4px solid #ffc107;
         padding: 1rem;
-        margin: 0.5rem 0;
+        margin: 1rem 0;
         border-radius: 5px;
     }
-    .success-card {
+    .success-box {
         background: #d4edda;
         border-left: 4px solid #28a745;
         padding: 1rem;
-        margin: 0.5rem 0;
+        margin: 1rem 0;
         border-radius: 5px;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Enhanced Knowledge Base with detailed, engaging responses
-ENHANCED_KNOWLEDGE_BASE = {
-    "office365": {
-        "user_login": {
-            "title": "🔐 Office 365 User Login - Step by Step",
-            "steps": [
-                "1️⃣ **Select Office 365** from the left panel in Email Backup Wizard",
-                "2️⃣ **Enter your email address** (e.g., john@company.com)",
-                "3️⃣ **Uncheck 'I am admin'** checkbox (this is for regular users)",
-                "4️⃣ **Click the Login button** - this opens Microsoft's secure login page",
-                "5️⃣ **Enter your credentials** on the Microsoft page (same as Outlook login)",
-                "6️⃣ **Grant permissions** when prompted - this allows the backup tool to access your emails"
-            ],
-            "tips": [
-                "💡 Use the same credentials you use for Outlook.com or office.com",
-                "🔒 Your password is never stored - Microsoft handles authentication",
-                "⚡ The process takes 30-60 seconds depending on your connection"
-            ],
-            "troubleshooting": [
-                "❌ **Login Failed?** Check if 2FA is enabled - you might need an app password",
-                "❌ **Permission Denied?** Contact your IT admin - they may need to enable third-party apps",
-                "❌ **Timeout Error?** Try again - sometimes Microsoft servers are busy"
-            ]
-        },
-        "admin_login": {
-            "title": "👑 Office 365 Admin Login - Bulk User Access",
-            "steps": [
-                "1️⃣ **Select Office 365** from the left panel",
-                "2️⃣ **Enter your ADMIN email** (must have admin privileges)",
-                "3️⃣ **Check 'I am admin'** checkbox ✅",
-                "4️⃣ **Click Login** - opens Microsoft admin consent page",
-                "5️⃣ **Enter admin credentials** and approve permissions",
-                "6️⃣ **Select users** from the list that appears",
-                "7️⃣ **Start backup** for multiple users simultaneously"
-            ],
-            "benefits": [
-                "🚀 **Bulk Processing**: Backup multiple users without individual passwords",
-                "🔐 **Secure**: Uses Microsoft Graph API - no password storage needed",
-                "⚡ **Efficient**: Process 3-5 users simultaneously",
-                "📊 **Centralized**: Perfect for IT administrators"
-            ]
-        }
-    },
-    "google_workspace": {
-        "oauth_login": {
-            "title": "🔍 Google Workspace OAuth Login",
-            "steps": [
-                "1️⃣ **Select Google Workspace** from left panel",
-                "2️⃣ **Enter your Gmail/Workspace email**",
-                "3️⃣ **Uncheck 'I am admin'** for single user",
-                "4️⃣ **Click Login** - opens Google's secure page",
-                "5️⃣ **Grant permissions** for Gmail, Calendar, Contacts access"
-            ],
-            "note": "🎯 **Pro Tip**: This method works for both personal Gmail and Google Workspace accounts!"
-        },
-        "admin_setup": {
-            "title": "⚙️ Google Workspace Admin Setup (Advanced)",
-            "requirements": [
-                "📋 **Service Account ID** from Google Cloud Console",
-                "🔑 **P12 Certificate File** (private key)",
-                "🔧 **Enabled APIs**: Admin SDK, Gmail API, Calendar API, People API"
-            ],
-            "steps": [
-                "1️⃣ Create Service Account in Google Cloud Console",
-                "2️⃣ Download P12 certificate file",
-                "3️⃣ Enable required APIs in Google Cloud",
-                "4️⃣ Configure domain-wide delegation",
-                "5️⃣ Enter details in Email Backup Wizard"
-            ],
-            "limitation": "⚠️ **Note**: Calendar data migration is currently not supported for Google Workspace"
-        }
-    },
-    "email_providers": {
-        "yahoo": {
-            "title": "📮 Yahoo Mail Setup Guide",
-            "method": "IMAP Configuration",
-            "settings": {
-                "IMAP Host": "imap.mail.yahoo.com",
-                "IMAP Port": "993",
-                "Security": "SSL/TLS",
-                "Authentication": "App Password Required"
-            },
-            "app_password_steps": [
-                "1️⃣ Go to Yahoo Account Security settings",
-                "2️⃣ Turn on 2-step verification (if not already enabled)",
-                "3️⃣ Generate App Password for 'Mail'",
-                "4️⃣ Use this App Password instead of your regular password",
-                "5️⃣ Enter in Email Backup Wizard IMAP settings"
-            ],
-            "tips": [
-                "🔐 **Never use your regular Yahoo password** - always use App Password",
-                "📱 **Keep App Password safe** - treat it like a regular password",
-                "🔄 **App Password expires** - generate new one if login fails"
-            ]
-        },
-        "gmail": {
-            "title": "📧 Gmail Setup - OAuth vs IMAP",
-            "recommended": "OAuth Login (Easier & Secure)",
-            "oauth_benefits": [
-                "✅ **No App Password needed**",
-                "✅ **More secure** - Google handles authentication",
-                "✅ **Faster setup** - just click and authorize",
-                "✅ **Works with 2FA** automatically"
-            ],
-            "imap_alternative": {
-                "note": "⚠️ **IMAP Method**: Google has disabled less secure app access",
-                "solution": "Use OAuth login method instead - it's easier and more secure!"
-            }
-        },
-        "aol": {
-            "title": "📬 AOL Mail Configuration",
-            "settings": {
-                "IMAP Host": "imap.aol.com",
-                "IMAP Port": "993",
-                "Security": "SSL/TLS"
-            },
-            "app_password_steps": [
-                "1️⃣ Sign in to your AOL Account Security page",
-                "2️⃣ Click 'Generate app password'",
-                "3️⃣ Select 'Other app' and enter 'Email Backup'",
-                "4️⃣ Copy the generated password",
-                "5️⃣ Use this in Email Backup Wizard (not your regular password)"
-            ]
-        },
-        "outlook_hotmail": {
-            "title": "🔷 Outlook.com / Hotmail Setup",
-            "method": "OAuth Login (Recommended)",
-            "steps": [
-                "1️⃣ **Select Office 365** (works for Outlook.com too)",
-                "2️⃣ **Enter your @outlook.com or @hotmail.com email**",
-                "3️⃣ **Uncheck 'I am admin'**",
-                "4️⃣ **Click Login** and authorize"
-            ],
-            "alternative": "Can also use IMAP with App Password if needed"
-        }
-    },
-    "troubleshooting": {
-        "slow_migration": {
-            "title": "🐌 Migration Running Slow? Here's Why & How to Fix",
-            "common_causes": [
-                "🌐 **Internet Speed**: Slow upload/download affects transfer speed",
-                "💻 **System Performance**: Old computer = slower processing",
-                "📊 **Data Size**: Large mailboxes (10GB+) take longer",
-                "🔄 **Server Load**: Email provider's server might be busy",
-                "🔌 **Background Apps**: Other software using internet bandwidth"
-            ],
-            "speed_improvements": [
-                "⚡ **Close other apps** using internet (YouTube, Netflix, etc.)",
-                "🔄 **Restart your router** - fresh connection often helps",
-                "💾 **Free up disk space** - at least 20% free space needed",
-                "🕐 **Run during off-peak hours** (late night/early morning)",
-                "📊 **Use Split PST** feature for large mailboxes"
-            ],
-            "benchmark": "📈 **Real Test**: 1GB mailbox = ~30 minutes on i5 processor with 10Mbps internet",
-            "patience_note": "⏰ **Be Patient**: Large migrations can take several hours - that's normal!"
-        },
-        "connection_issues": {
-            "title": "🔌 Connection Lost? Quick Fixes",
-            "immediate_fixes": [
-                "🔄 **Check internet connection** - try opening a website",
-                "⏸️ **Pause and resume** the migration",
-                "🔌 **Restart your router/modem**",
-                "💻 **Close and reopen** Email Backup Wizard",
-                "🕐 **Wait 5-10 minutes** then try again"
-            ],
-            "advanced_solutions": [
-                "🔧 **Change DNS servers** to 8.8.8.8 and 8.8.4.4",
-                "🛡️ **Temporarily disable antivirus** (re-enable after backup)",
-                "🔥 **Check firewall settings** - allow Email Backup Wizard",
-                "📡 **Try different network** (mobile hotspot as test)"
-            ]
-        }
-    },
-    "features": {
-        "incremental_backup": {
-            "title": "🔄 Incremental Backup - Never Lose Progress!",
-            "what_it_does": [
-                "💾 **Remembers where it stopped** if interrupted",
-                "⚡ **Skips already backed up emails** on restart",
-                "🎯 **Only processes new/changed emails** in subsequent runs",
-                "📊 **Saves time and bandwidth** on large mailboxes"
-            ],
-            "how_to_enable": [
-                "1️⃣ Go to **Filter** tab in Email Backup Wizard",
-                "2️⃣ **Incremental Backup is ON by default** ✅",
-                "3️⃣ **No additional setup needed** - it just works!"
-            ],
-            "use_cases": [
-                "🏢 **Daily backups** - only new emails get processed",
-                "🔄 **Resume interrupted backups** - continue where you left off",
-                "📈 **Regular maintenance** - keep backups up-to-date efficiently"
-            ]
-        },
-        "split_pst": {
-            "title": "✂️ Split PST Files - Handle Large Mailboxes",
-            "why_split": [
-                "📁 **Outlook PST limit**: 50GB maximum file size",
-                "💾 **Easier management**: Smaller files are easier to handle",
-                "🔄 **Better performance**: Outlook opens smaller PST files faster",
-                "💿 **Storage flexibility**: Fit on different storage devices"
-            ],
-            "size_options": [
-                "📦 **2GB** - For older Outlook versions",
-                "📦 **5GB** - Good balance of size and manageability", 
-                "📦 **10GB** - Standard recommendation",
-                "📦 **20GB** - For modern systems",
-                "📦 **25GB** - Large but manageable",
-                "📦 **30GB** - Maximum recommended size"
-            ],
-            "recommendation": "🎯 **Best Practice**: Use 10GB splits for most scenarios"
-        }
-    }
-}
+@st.cache_data
+def load_knowledge_base():
+    """Load knowledge base from JSON file"""
+    try:
+        with open('knowledge_base.json', 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        st.error("Knowledge base file not found. Please ensure knowledge_base.json is in the same directory.")
+        return {}
+    except json.JSONDecodeError:
+        st.error("Error reading knowledge base file. Please check the JSON format.")
+        return {}
 
-# Enhanced keyword matching with more comprehensive coverage
-ENHANCED_KEYWORDS = {
-    "office365": ['office 365', 'o365', 'microsoft', 'outlook.com', 'hotmail', 'admin login', 'user login', 'graph api', 'delegated', 'microsoft login'],
-    "google_workspace": ['google workspace', 'gmail', 'google admin', 'service account', 'p12', 'certificate', 'oauth', 'google login'],
-    "yahoo": ['yahoo', 'yahoo mail', 'ymail', 'rocketmail'],
-    "aol": ['aol', 'aol mail', 'aim mail'],
-    "email_providers": ['imap', 'smtp', 'app password', 'email provider', 'mail server', 'email settings'],
-    "troubleshooting": ['slow', 'speed', 'connection lost', 'error', 'failed', 'timeout', 'bandwidth', 'not working', 'problem', 'issue'],
-    "features": ['incremental', 'backup', 'folder structure', 'concurrent', 'split pst', 'filter', 'resume', 'pause']
-}
-
-def enhanced_search_knowledge(user_message):
-    """Enhanced search with better matching and scoring"""
+def search_knowledge_base(user_message, knowledge_base):
+    """Search knowledge base for relevant information"""
     user_message_lower = user_message.lower()
-
-    # Direct provider matching
-    if any(word in user_message_lower for word in ['yahoo', 'ymail']):
-        return {
-            "category": "yahoo",
-            "confidence": 10,
-            "content": ENHANCED_KNOWLEDGE_BASE["email_providers"]["yahoo"],
-            "is_relevant": True
-        }
-
-    if any(word in user_message_lower for word in ['aol', 'aim']):
-        return {
-            "category": "aol", 
-            "confidence": 10,
-            "content": ENHANCED_KNOWLEDGE_BASE["email_providers"]["aol"],
-            "is_relevant": True
-        }
-
-    if any(word in user_message_lower for word in ['gmail', 'google mail']):
-        return {
-            "category": "gmail",
-            "confidence": 10, 
-            "content": ENHANCED_KNOWLEDGE_BASE["email_providers"]["gmail"],
-            "is_relevant": True
-        }
-
-    # Enhanced keyword matching
     best_match = None
     max_score = 0
     matched_content = {}
 
-    for category, words in ENHANCED_KEYWORDS.items():
-        score = sum(2 if word in user_message_lower else 0 for word in words)
-        if score > max_score:
-            max_score = score
-            best_match = category
+    # Search through all categories and items
+    for category, items in knowledge_base.items():
+        for item_key, item_data in items.items():
+            if isinstance(item_data, dict) and 'keywords' in item_data:
+                # Calculate relevance score based on keyword matches
+                score = sum(2 for keyword in item_data['keywords'] if keyword.lower() in user_message_lower)
 
-    # Get relevant content based on category
-    if best_match and max_score > 0:
-        if best_match == "office365":
-            if "admin" in user_message_lower:
-                matched_content = ENHANCED_KNOWLEDGE_BASE["office365"]["admin_login"]
-            else:
-                matched_content = ENHANCED_KNOWLEDGE_BASE["office365"]["user_login"]
-        elif best_match == "google_workspace":
-            matched_content = ENHANCED_KNOWLEDGE_BASE["google_workspace"]["oauth_login"]
-        elif best_match == "troubleshooting":
-            if "slow" in user_message_lower:
-                matched_content = ENHANCED_KNOWLEDGE_BASE["troubleshooting"]["slow_migration"]
-            else:
-                matched_content = ENHANCED_KNOWLEDGE_BASE["troubleshooting"]["connection_issues"]
-        elif best_match == "features":
-            if "split" in user_message_lower or "pst" in user_message_lower:
-                matched_content = ENHANCED_KNOWLEDGE_BASE["features"]["split_pst"]
-            else:
-                matched_content = ENHANCED_KNOWLEDGE_BASE["features"]["incremental_backup"]
+                # Boost score for exact matches
+                if any(keyword.lower() == user_message_lower.strip() for keyword in item_data['keywords']):
+                    score += 5
+
+                if score > max_score:
+                    max_score = score
+                    best_match = f"{category}.{item_key}"
+                    matched_content = item_data
 
     return {
         "category": best_match,
@@ -366,129 +109,231 @@ def enhanced_search_knowledge(user_message):
         "is_relevant": max_score > 0
     }
 
-def format_enhanced_response(content, category):
-    """Format response with rich content"""
+def format_response(content):
+    """Format response content into readable markdown"""
     if not content:
-        return "I couldn't find specific information about that. Let me connect you with our support team!"
+        return "I couldn't find specific information about that."
 
-    response = f"## {content.get('title', 'Information')}
+    response = ""
 
-"
+    # Add title
+    if 'title' in content:
+        response += f"## {content['title']}\n\n"
 
-    # Add steps if available
-    if 'steps' in content:
-        response += "### 📋 Step-by-Step Instructions:
-"
-        for step in content['steps']:
-            response += f"{step}
+    # Add overview/note
+    if 'overview' in content:
+        response += f"{content['overview']}\n\n"
+    if 'note' in content:
+        response += f"💡 **{content['note']}**\n\n"
 
-"
+    # Add recommended method
+    if 'recommended_method' in content:
+        response += f"### 🎯 Recommended Method: {content['recommended_method']}\n\n"
 
-    # Add settings if available  
+    # Add settings
     if 'settings' in content:
-        response += "### ⚙️ Settings:
-"
+        response += "### ⚙️ Settings:\n"
         for key, value in content['settings'].items():
-            response += f"**{key}**: `{value}`
+            response += f"- **{key}**: `{value}`\n"
+        response += "\n"
 
-"
+    # Add steps
+    if 'steps' in content:
+        response += "### 📋 Step-by-Step Instructions:\n"
+        for step in content['steps']:
+            response += f"{step}\n\n"
 
-    # Add tips if available
-    if 'tips' in content:
-        response += "### 💡 Pro Tips:
-"
-        for tip in content['tips']:
-            response += f"{tip}
+    # Add OAuth steps
+    if 'oauth_steps' in content:
+        response += "### 🔐 OAuth Login Steps:\n"
+        for step in content['oauth_steps']:
+            response += f"{step}\n\n"
 
-"
-
-    # Add troubleshooting if available
-    if 'troubleshooting' in content:
-        response += "### 🔧 Troubleshooting:
-"
-        for issue in content['troubleshooting']:
-            response += f"{issue}
-
-"
-
-    # Add benefits if available
+    # Add benefits
     if 'benefits' in content:
-        response += "### ✨ Benefits:
-"
+        response += "### ✨ Benefits:\n"
         for benefit in content['benefits']:
-            response += f"{benefit}
+            response += f"- {benefit}\n"
+        response += "\n"
 
-"
+    # Add OAuth benefits
+    if 'oauth_benefits' in content:
+        response += "### ✨ OAuth Benefits:\n"
+        for benefit in content['oauth_benefits']:
+            response += f"- {benefit}\n"
+        response += "\n"
 
-    # Add common causes if available
+    # Add tips
+    if 'tips' in content:
+        response += "### 💡 Pro Tips:\n"
+        for tip in content['tips']:
+            response += f"- {tip}\n"
+        response += "\n"
+
+    # Add troubleshooting
+    if 'troubleshooting' in content:
+        response += "### 🔧 Troubleshooting:\n"
+        for issue in content['troubleshooting']:
+            response += f"- {issue}\n"
+        response += "\n"
+
+    # Add common causes
     if 'common_causes' in content:
-        response += "### 🔍 Common Causes:
-"
+        response += "### 🔍 Common Causes:\n"
         for cause in content['common_causes']:
-            response += f"{cause}
+            response += f"- {cause}\n"
+        response += "\n"
 
-"
-
-    # Add speed improvements if available
+    # Add speed improvements
     if 'speed_improvements' in content:
-        response += "### ⚡ Speed Improvements:
-"
+        response += "### ⚡ Speed Improvements:\n"
         for improvement in content['speed_improvements']:
-            response += f"{improvement}
+            response += f"- {improvement}\n"
+        response += "\n"
 
-"
+    # Add immediate fixes
+    if 'immediate_fixes' in content:
+        response += "### 🚨 Immediate Fixes:\n"
+        for fix in content['immediate_fixes']:
+            response += f"- {fix}\n"
+        response += "\n"
 
-    # Add app password steps if available
-    if 'app_password_steps' in content:
-        response += "### 🔑 App Password Setup:
-"
-        for step in content['app_password_steps']:
-            response += f"{step}
+    # Add advanced solutions
+    if 'advanced_solutions' in content:
+        response += "### 🔧 Advanced Solutions:\n"
+        for solution in content['advanced_solutions']:
+            response += f"- {solution}\n"
+        response += "\n"
 
-"
+    # Add common solutions
+    if 'common_solutions' in content:
+        response += "### 💡 Common Solutions:\n"
+        for solution in content['common_solutions']:
+            response += f"- {solution}\n"
+        response += "\n"
 
-    response += "
----
-💬 **Need more help?** Contact our live support: [https://emailbackupwizard.com/support.html](https://emailbackupwizard.com/support.html)"
+    # Add provider specific info
+    if 'provider_specific' in content:
+        response += "### 📧 Provider-Specific Solutions:\n"
+        for provider, solution in content['provider_specific'].items():
+            response += f"- **{provider}**: {solution}\n"
+        response += "\n"
+
+    # Add what it does
+    if 'what_it_does' in content:
+        response += "### 🎯 What It Does:\n"
+        for item in content['what_it_does']:
+            response += f"- {item}\n"
+        response += "\n"
+
+    # Add how to enable
+    if 'how_to_enable' in content:
+        response += "### 🔧 How to Enable:\n"
+        for step in content['how_to_enable']:
+            response += f"{step}\n\n"
+
+    # Add use cases
+    if 'use_cases' in content:
+        response += "### 📈 Use Cases:\n"
+        for case in content['use_cases']:
+            response += f"- {case}\n"
+        response += "\n"
+
+    # Add why split
+    if 'why_split' in content:
+        response += "### 🤔 Why Split PST Files?\n"
+        for reason in content['why_split']:
+            response += f"- {reason}\n"
+        response += "\n"
+
+    # Add size options
+    if 'size_options' in content:
+        response += "### 📦 Size Options:\n"
+        for option in content['size_options']:
+            response += f"- {option}\n"
+        response += "\n"
+
+    # Add recommendation
+    if 'recommendation' in content:
+        response += f"### 🎯 Recommendation:\n{content['recommendation']}\n\n"
+
+    # Add benchmark
+    if 'benchmark' in content:
+        response += f"### 📊 Performance Benchmark:\n{content['benchmark']}\n\n"
+
+    # Add patience note
+    if 'patience_note' in content:
+        response += f"### ⏰ Important Note:\n{content['patience_note']}\n\n"
+
+    # Add IMAP note
+    if 'imap_note' in content:
+        response += f"### ⚠️ Important:\n{content['imap_note']}\n\n"
+
+    # Add limitation
+    if 'limitation' in content:
+        response += f"### ⚠️ Limitation:\n{content['limitation']}\n\n"
+
+    # Add alternative
+    if 'alternative' in content:
+        response += f"### 🔄 Alternative:\n{content['alternative']}\n\n"
+
+    # Add requirements
+    if 'requirements' in content:
+        response += "### 📋 Requirements:\n"
+        for req in content['requirements']:
+            response += f"- {req}\n"
+        response += "\n"
+
+    # Add supported providers
+    if 'supported_providers' in content:
+        response += "### 📧 Supported Providers:\n"
+        for provider in content['supported_providers']:
+            response += f"- {provider}\n"
+        response += "\n"
+
+    # Add basic steps
+    if 'basic_steps' in content:
+        response += "### 🚀 Basic Steps:\n"
+        for step in content['basic_steps']:
+            response += f"{step}\n\n"
 
     return response
 
-def generate_enhanced_response(user_message, search_result):
-    """Generate enhanced, engaging responses"""
+def generate_response(user_message, search_result, knowledge_base):
+    """Generate response based on search results"""
     if not search_result["is_relevant"]:
-        return f"""🤔 Hmm, that's an interesting question! While I'd love to help with "{user_message}", it seems to be outside my expertise with Email Backup Wizard software.
+        return f"""🤔 I understand you're asking about "{user_message}", but I don't have specific information about that topic in my knowledge base.
 
-🎯 **But don't worry!** Our amazing support team specializes in handling unique situations like yours.
+### 🎯 **What I Can Help With:**
+- 📧 **Email Provider Setup** (Yahoo, Gmail, AOL, Outlook)
+- 🔐 **Office 365 & Google Workspace** configuration  
+- ⚙️ **IMAP Settings** and troubleshooting
+- 🐌 **Performance Issues** and speed optimization
+- ✨ **Advanced Features** like incremental backup & PST splitting
 
-### 🚀 Get Instant Help:
-**Live Support**: [https://emailbackupwizard.com/support.html](https://emailbackupwizard.com/support.html)
+### 🆘 **Need Immediate Help?**
+Our support team specializes in unique situations: **[Live Support](https://emailbackupwizard.com/support.html)**
 
-### 👥 Our Support Team Rocks At:
-• 🔧 **Technical troubleshooting** - They've seen it all!
-• 🏢 **Account-specific issues** - Personalized solutions
-• 🎨 **Custom migration scenarios** - Unique setups, no problem
-• 💳 **Billing and licensing** - All your account questions
+### 💡 **Try asking me:**
+- *"How to login to Yahoo mail?"*
+- *"Office 365 admin setup"*
+- *"Why is migration slow?"*
+- *"Gmail OAuth setup"*
 
-### 💡 **Quick Tip**: 
-Try asking me about specific topics like:
-• "How to login to Yahoo mail"
-• "Office 365 admin setup"  
-• "Why is my backup slow"
-• "Gmail OAuth login"
+What else can I help you with? 😊"""
 
-I'm here to help! 😊"""
-
-    category = search_result["category"]
     content = search_result["content"]
+    formatted_response = format_response(content)
 
-    # Handle special categories
-    if category in ["yahoo", "aol", "gmail"]:
-        return format_enhanced_response(content, category)
+    # Add footer with support link
+    formatted_response += "\n---\n💬 **Need more help?** Contact our live support: [https://emailbackupwizard.com/support.html](https://emailbackupwizard.com/support.html)"
 
-    # Handle general categories
-    return format_enhanced_response(content, category)
+    return formatted_response
 
-# Initialize session state with a more engaging welcome message
+# Load knowledge base
+knowledge_base = load_knowledge_base()
+
+# Initialize session state
 if "messages" not in st.session_state:
     st.session_state.messages = [
         {
@@ -515,7 +360,7 @@ I'm your AI assistant, ready to help you with all things email backup and migrat
         }
     ]
 
-# Enhanced header with animation
+# Header
 st.markdown("""
 <div class="main-header">
     <h1>🚀 Email Backup Wizard Support</h1>
@@ -523,51 +368,49 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Chat interface
-chat_container = st.container()
-
-with chat_container:
-    # Display chat messages with enhanced formatting
+# Main chat interface
+if knowledge_base:  # Only show chat if knowledge base loaded successfully
+    # Display chat messages
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
-# Enhanced chat input with better prompts
-if prompt := st.chat_input("Ask me about Yahoo login, Office 365 setup, slow migration, Gmail OAuth, or any email backup question..."):
-    # Add user message
-    st.session_state.messages.append({
-        "role": "user", 
-        "content": prompt,
-        "timestamp": datetime.now()
-    })
+    # Chat input
+    if prompt := st.chat_input("Ask me about Yahoo login, Office 365 setup, slow migration, Gmail OAuth, or any email backup question..."):
+        # Add user message
+        st.session_state.messages.append({
+            "role": "user", 
+            "content": prompt,
+            "timestamp": datetime.now()
+        })
 
-    # Display user message
-    with st.chat_message("user"):
-        st.markdown(prompt)
+        # Display user message
+        with st.chat_message("user"):
+            st.markdown(prompt)
 
-    # Generate and display assistant response
-    with st.chat_message("assistant"):
-        with st.spinner("🤔 Analyzing your question..."):
-            # Simulate more realistic processing time
-            time.sleep(random.uniform(1.5, 2.5))
+        # Generate and display assistant response
+        with st.chat_message("assistant"):
+            with st.spinner("🤔 Analyzing your question..."):
+                # Simulate processing time
+                time.sleep(random.uniform(1.0, 2.0))
 
-            # Search knowledge base
-            search_result = enhanced_search_knowledge(prompt)
+                # Search knowledge base
+                search_result = search_knowledge_base(prompt, knowledge_base)
 
-            # Generate response
-            response = generate_enhanced_response(prompt, search_result)
+                # Generate response
+                response = generate_response(prompt, search_result, knowledge_base)
 
-            # Display response with typing effect simulation
-            st.markdown(response)
+                # Display response
+                st.markdown(response)
 
-    # Add assistant message to session state
-    st.session_state.messages.append({
-        "role": "assistant", 
-        "content": response,
-        "timestamp": datetime.now()
-    })
+        # Add assistant message to session state
+        st.session_state.messages.append({
+            "role": "assistant", 
+            "content": response,
+            "timestamp": datetime.now()
+        })
 
-# Enhanced sidebar with more features
+# Sidebar
 with st.sidebar:
     st.markdown("### 📊 Chat Analytics")
     total_messages = len(st.session_state.messages)
@@ -600,7 +443,7 @@ with st.sidebar:
         "AOL app password creation",
         "What is incremental backup?",
         "How to split large PST files?",
-        "Google Workspace configuration"
+        "Login failed solutions"
     ]
 
     for i, question in enumerate(popular_questions):
@@ -618,13 +461,7 @@ with st.sidebar:
         st.session_state.messages = [st.session_state.messages[0]]  # Keep welcome message
         st.rerun()
 
-    st.markdown("---")
-    st.markdown("### 🌟 Feedback")
-    feedback = st.selectbox("How helpful was I?", ["Select...", "Very Helpful! 🌟", "Helpful 👍", "Okay 👌", "Needs Improvement 📝"])
-    if feedback != "Select...":
-        st.success(f"Thanks for your feedback: {feedback}")
-
-# Enhanced footer
+# Footer
 st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: #666; padding: 20px;'>

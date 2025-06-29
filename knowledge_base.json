@@ -1,0 +1,341 @@
+{
+  "email_providers": {
+    "yahoo": {
+      "title": "📮 Yahoo Mail Setup Guide",
+      "method": "IMAP Configuration",
+      "settings": {
+        "IMAP Host": "imap.mail.yahoo.com",
+        "IMAP Port": "993",
+        "Security": "SSL/TLS",
+        "Authentication": "App Password Required"
+      },
+      "steps": [
+        "1️⃣ Go to Yahoo Account Security settings",
+        "2️⃣ Turn on 2-step verification (if not already enabled)",
+        "3️⃣ Generate App Password for 'Mail'",
+        "4️⃣ Use this App Password instead of your regular password",
+        "5️⃣ Enter in Email Backup Wizard IMAP settings"
+      ],
+      "tips": [
+        "🔐 Never use your regular Yahoo password - always use App Password",
+        "📱 Keep App Password safe - treat it like a regular password",
+        "🔄 App Password expires - generate new one if login fails"
+      ],
+      "keywords": [
+        "yahoo",
+        "ymail",
+        "rocketmail",
+        "yahoo mail"
+      ]
+    },
+    "gmail": {
+      "title": "📧 Gmail Setup - OAuth vs IMAP",
+      "recommended_method": "OAuth Login (Easier & Secure)",
+      "oauth_benefits": [
+        "✅ No App Password needed",
+        "✅ More secure - Google handles authentication",
+        "✅ Faster setup - just click and authorize",
+        "✅ Works with 2FA automatically"
+      ],
+      "oauth_steps": [
+        "1️⃣ Select Google Workspace from left panel",
+        "2️⃣ Enter your Gmail address",
+        "3️⃣ Uncheck 'I am admin' for personal Gmail",
+        "4️⃣ Click Login - opens Google's secure page",
+        "5️⃣ Grant permissions for Gmail access"
+      ],
+      "imap_note": "⚠️ Google has disabled less secure app access. Use OAuth login method instead!",
+      "keywords": [
+        "gmail",
+        "google mail",
+        "googlemail"
+      ]
+    },
+    "aol": {
+      "title": "📬 AOL Mail Configuration",
+      "settings": {
+        "IMAP Host": "imap.aol.com",
+        "IMAP Port": "993",
+        "Security": "SSL/TLS"
+      },
+      "steps": [
+        "1️⃣ Sign in to your AOL Account Security page",
+        "2️⃣ Click 'Generate app password'",
+        "3️⃣ Select 'Other app' and enter 'Email Backup'",
+        "4️⃣ Copy the generated password",
+        "5️⃣ Use this in Email Backup Wizard (not your regular password)"
+      ],
+      "keywords": [
+        "aol",
+        "aol mail",
+        "aim mail"
+      ]
+    },
+    "outlook_hotmail": {
+      "title": "🔷 Outlook.com / Hotmail Setup",
+      "method": "OAuth Login (Recommended)",
+      "steps": [
+        "1️⃣ Select Office 365 (works for Outlook.com too)",
+        "2️⃣ Enter your @outlook.com or @hotmail.com email",
+        "3️⃣ Uncheck 'I am admin'",
+        "4️⃣ Click Login and authorize"
+      ],
+      "alternative": "Can also use IMAP with App Password if needed",
+      "keywords": [
+        "outlook",
+        "hotmail",
+        "outlook.com",
+        "hotmail.com",
+        "live.com"
+      ]
+    }
+  },
+  "office365": {
+    "user_login": {
+      "title": "🔐 Office 365 User Login - Step by Step",
+      "steps": [
+        "1️⃣ Select Office 365 from the left panel in Email Backup Wizard",
+        "2️⃣ Enter your email address (e.g., john@company.com)",
+        "3️⃣ Uncheck 'I am admin' checkbox (this is for regular users)",
+        "4️⃣ Click the Login button - this opens Microsoft's secure login page",
+        "5️⃣ Enter your credentials on the Microsoft page (same as Outlook login)",
+        "6️⃣ Grant permissions when prompted - this allows the backup tool to access your emails"
+      ],
+      "tips": [
+        "💡 Use the same credentials you use for Outlook.com or office.com",
+        "🔒 Your password is never stored - Microsoft handles authentication",
+        "⚡ The process takes 30-60 seconds depending on your connection"
+      ],
+      "troubleshooting": [
+        "❌ Login Failed? Check if 2FA is enabled - you might need an app password",
+        "❌ Permission Denied? Contact your IT admin - they may need to enable third-party apps",
+        "❌ Timeout Error? Try again - sometimes Microsoft servers are busy"
+      ],
+      "keywords": [
+        "office 365",
+        "o365",
+        "microsoft",
+        "user login"
+      ]
+    },
+    "admin_login": {
+      "title": "👑 Office 365 Admin Login - Bulk User Access",
+      "steps": [
+        "1️⃣ Select Office 365 from the left panel",
+        "2️⃣ Enter your ADMIN email (must have admin privileges)",
+        "3️⃣ Check 'I am admin' checkbox ✅",
+        "4️⃣ Click Login - opens Microsoft admin consent page",
+        "5️⃣ Enter admin credentials and approve permissions",
+        "6️⃣ Select users from the list that appears",
+        "7️⃣ Start backup for multiple users simultaneously"
+      ],
+      "benefits": [
+        "🚀 Bulk Processing: Backup multiple users without individual passwords",
+        "🔐 Secure: Uses Microsoft Graph API - no password storage needed",
+        "⚡ Efficient: Process 3-5 users simultaneously",
+        "📊 Centralized: Perfect for IT administrators"
+      ],
+      "keywords": [
+        "office 365 admin",
+        "o365 admin",
+        "microsoft admin",
+        "admin login",
+        "bulk users"
+      ]
+    }
+  },
+  "google_workspace": {
+    "oauth_login": {
+      "title": "🔍 Google Workspace OAuth Login",
+      "steps": [
+        "1️⃣ Select Google Workspace from left panel",
+        "2️⃣ Enter your Gmail/Workspace email",
+        "3️⃣ Uncheck 'I am admin' for single user",
+        "4️⃣ Click Login - opens Google's secure page",
+        "5️⃣ Grant permissions for Gmail, Calendar, Contacts access"
+      ],
+      "note": "🎯 Pro Tip: This method works for both personal Gmail and Google Workspace accounts!",
+      "keywords": [
+        "google workspace",
+        "gsuite",
+        "google admin"
+      ]
+    },
+    "admin_setup": {
+      "title": "⚙️ Google Workspace Admin Setup (Advanced)",
+      "requirements": [
+        "📋 Service Account ID from Google Cloud Console",
+        "🔑 P12 Certificate File (private key)",
+        "🔧 Enabled APIs: Admin SDK, Gmail API, Calendar API, People API"
+      ],
+      "steps": [
+        "1️⃣ Create Service Account in Google Cloud Console",
+        "2️⃣ Download P12 certificate file",
+        "3️⃣ Enable required APIs in Google Cloud",
+        "4️⃣ Configure domain-wide delegation",
+        "5️⃣ Enter details in Email Backup Wizard"
+      ],
+      "limitation": "⚠️ Note: Calendar data migration is currently not supported for Google Workspace",
+      "keywords": [
+        "service account",
+        "p12",
+        "certificate",
+        "google cloud"
+      ]
+    }
+  },
+  "troubleshooting": {
+    "slow_migration": {
+      "title": "🐌 Migration Running Slow? Here's Why & How to Fix",
+      "common_causes": [
+        "🌐 Internet Speed: Slow upload/download affects transfer speed",
+        "💻 System Performance: Old computer = slower processing",
+        "📊 Data Size: Large mailboxes (10GB+) take longer",
+        "🔄 Server Load: Email provider's server might be busy",
+        "🔌 Background Apps: Other software using internet bandwidth"
+      ],
+      "speed_improvements": [
+        "⚡ Close other apps using internet (YouTube, Netflix, etc.)",
+        "🔄 Restart your router - fresh connection often helps",
+        "💾 Free up disk space - at least 20% free space needed",
+        "🕐 Run during off-peak hours (late night/early morning)",
+        "📊 Use Split PST feature for large mailboxes"
+      ],
+      "benchmark": "📈 Real Test: 1GB mailbox = ~30 minutes on i5 processor with 10Mbps internet",
+      "patience_note": "⏰ Be Patient: Large migrations can take several hours - that's normal!",
+      "keywords": [
+        "slow",
+        "speed",
+        "performance",
+        "taking long",
+        "slow migration"
+      ]
+    },
+    "connection_issues": {
+      "title": "🔌 Connection Lost? Quick Fixes",
+      "immediate_fixes": [
+        "🔄 Check internet connection - try opening a website",
+        "⏸️ Pause and resume the migration",
+        "🔌 Restart your router/modem",
+        "💻 Close and reopen Email Backup Wizard",
+        "🕐 Wait 5-10 minutes then try again"
+      ],
+      "advanced_solutions": [
+        "🔧 Change DNS servers to 8.8.8.8 and 8.8.4.4",
+        "🛡️ Temporarily disable antivirus (re-enable after backup)",
+        "🔥 Check firewall settings - allow Email Backup Wizard",
+        "📡 Try different network (mobile hotspot as test)"
+      ],
+      "keywords": [
+        "connection lost",
+        "timeout",
+        "network error",
+        "disconnected",
+        "connection failed"
+      ]
+    },
+    "login_failed": {
+      "title": "🚫 Login Failed? Common Solutions",
+      "common_solutions": [
+        "🔑 Use App Password instead of regular password (Yahoo, AOL)",
+        "🔐 Enable 2-factor authentication first (required for app passwords)",
+        "🔄 Try OAuth login method instead of IMAP (Gmail, Office 365)",
+        "👤 Check if admin permissions are needed (Office 365)",
+        "🕐 Wait a few minutes and try again (server might be busy)"
+      ],
+      "provider_specific": {
+        "Yahoo": "Generate App Password from Account Security settings",
+        "AOL": "Create App Password from Account Security page",
+        "Gmail": "Use OAuth login - IMAP is disabled by Google",
+        "Office 365": "Check if 2FA is enabled, may need app password"
+      },
+      "keywords": [
+        "login failed",
+        "authentication error",
+        "password wrong",
+        "can't login",
+        "access denied"
+      ]
+    }
+  },
+  "features": {
+    "incremental_backup": {
+      "title": "🔄 Incremental Backup - Never Lose Progress!",
+      "what_it_does": [
+        "💾 Remembers where it stopped if interrupted",
+        "⚡ Skips already backed up emails on restart",
+        "🎯 Only processes new/changed emails in subsequent runs",
+        "📊 Saves time and bandwidth on large mailboxes"
+      ],
+      "how_to_enable": [
+        "1️⃣ Go to Filter tab in Email Backup Wizard",
+        "2️⃣ Incremental Backup is ON by default ✅",
+        "3️⃣ No additional setup needed - it just works!"
+      ],
+      "use_cases": [
+        "🏢 Daily backups - only new emails get processed",
+        "🔄 Resume interrupted backups - continue where you left off",
+        "📈 Regular maintenance - keep backups up-to-date efficiently"
+      ],
+      "keywords": [
+        "incremental",
+        "resume",
+        "continue",
+        "interrupted",
+        "backup"
+      ]
+    },
+    "split_pst": {
+      "title": "✂️ Split PST Files - Handle Large Mailboxes",
+      "why_split": [
+        "📁 Outlook PST limit: 50GB maximum file size",
+        "💾 Easier management: Smaller files are easier to handle",
+        "🔄 Better performance: Outlook opens smaller PST files faster",
+        "💿 Storage flexibility: Fit on different storage devices"
+      ],
+      "size_options": [
+        "📦 2GB - For older Outlook versions",
+        "📦 5GB - Good balance of size and manageability",
+        "📦 10GB - Standard recommendation",
+        "📦 20GB - For modern systems",
+        "📦 25GB - Large but manageable",
+        "📦 30GB - Maximum recommended size"
+      ],
+      "recommendation": "🎯 Best Practice: Use 10GB splits for most scenarios",
+      "keywords": [
+        "split pst",
+        "large files",
+        "pst size",
+        "file size",
+        "split"
+      ]
+    }
+  },
+  "general": {
+    "getting_started": {
+      "title": "🚀 Getting Started with Email Backup Wizard",
+      "overview": "Email Backup Wizard helps you migrate emails from various providers to PST, MBOX, or other formats.",
+      "supported_providers": [
+        "📧 Office 365 / Outlook.com",
+        "📮 Yahoo Mail",
+        "📬 AOL Mail",
+        "📧 Gmail / Google Workspace",
+        "⚙️ Any IMAP-enabled email provider"
+      ],
+      "basic_steps": [
+        "1️⃣ Download and install Email Backup Wizard",
+        "2️⃣ Select your email provider from the left panel",
+        "3️⃣ Enter your email credentials or use OAuth",
+        "4️⃣ Choose backup format (PST, MBOX, etc.)",
+        "5️⃣ Start the migration process"
+      ],
+      "keywords": [
+        "getting started",
+        "how to start",
+        "begin",
+        "first time",
+        "setup"
+      ]
+    }
+  }
+}
